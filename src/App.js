@@ -43,7 +43,12 @@ class App extends Component {
     }
   }
 
-  
+  // componentDidMount(){
+  // 	fetch('http://localhost:3001/')
+  // 	.then(response => response.json())
+  // 	.then(data => console.log(data))
+  // }
+
   loadUser = (data) => {
     this.setState({user: {
       id: data.id,
@@ -114,10 +119,10 @@ class App extends Component {
               <FaceRecognition box={box} imageUrl={imageUrl} />
             </div>
           : (
-             route === 'signin'
-             ? <SignIn onRouteChange={this.onRouteChange}/>
-             : <Register onRouteChange={this.onRouteChange}/>
-            )
+            route === 'signin'
+            ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+            : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+           )
         }
       </div>
     );
